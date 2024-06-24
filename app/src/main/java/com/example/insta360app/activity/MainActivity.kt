@@ -1,6 +1,5 @@
 package com.example.insta360app.activity
 
-
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,20 +10,21 @@ import com.example.insta360app.util.NetworkManager
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.runtime.Permission
 
-
 class MainActivity : BaseObserveCameraActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setTitle(R.string.main_toolbar_title)
 
-        //checkStoragePermission()
 
+        checkStoragePermission()
 
         if (InstaCameraManager.getInstance().cameraConnectedType != InstaCameraManager.CONNECT_TYPE_NONE) {
             onCameraStatusChanged(true)
         }
+
 
         // Button Connect WIFI
         findViewById<View>(R.id.btn_connect_by_wifi).setOnClickListener {
@@ -42,6 +42,7 @@ class MainActivity : BaseObserveCameraActivity() {
 
     }
 
+
     private fun checkStoragePermission() {
         AndPermission.with(this)
             .runtime()
@@ -58,7 +59,6 @@ class MainActivity : BaseObserveCameraActivity() {
             }
             .start()
     }
-
 
     override fun onCameraStatusChanged(enabled: Boolean) {
         super.onCameraStatusChanged(enabled)
