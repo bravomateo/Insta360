@@ -19,15 +19,13 @@ class MainActivity : BaseObserveCameraActivity() {
         setContentView(R.layout.activity_main)
         setTitle(R.string.main_toolbar_title)
 
-        checkStoragePermission()
+        //checkStoragePermission()
 
 
-        /*
         if (InstaCameraManager.getInstance().cameraConnectedType != InstaCameraManager.CONNECT_TYPE_NONE) {
             onCameraStatusChanged(true)
-        }*/
+        }
 
-        /*
         // Button Connect WIFI
         findViewById<View>(R.id.btn_connect_by_wifi).setOnClickListener {
             CameraBindNetworkManager.getInstance().bindNetwork { _ ->
@@ -39,27 +37,29 @@ class MainActivity : BaseObserveCameraActivity() {
         findViewById<View>(R.id.btn_close_camera).setOnClickListener {
             CameraBindNetworkManager.getInstance().unbindNetwork()
             InstaCameraManager.getInstance().closeCamera()
-        }*/
+        }
+
 
     }
 
     private fun checkStoragePermission() {
         AndPermission.with(this)
             .runtime()
-            .permission(Permission.Group.STORAGE, Permission.Group.LOCATION)
+            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.ACCESS_FINE_LOCATION)
             .onDenied { permissions ->
                 if (AndPermission.hasAlwaysDeniedPermission(this, permissions)) {
                     AndPermission.with(this)
                         .runtime()
                         .setting()
                         .start(1000)
+                } else {
+                    finish()
                 }
-                finish()
             }
             .start()
     }
 
-    /*
+
     override fun onCameraStatusChanged(enabled: Boolean) {
         super.onCameraStatusChanged(enabled)
         if (enabled) {
@@ -91,5 +91,5 @@ class MainActivity : BaseObserveCameraActivity() {
         }
     }
 
-    */
+
 }

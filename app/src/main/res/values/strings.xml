@@ -15,6 +15,12 @@
     <string name="stitch_hdr">HDR Stitching Effect</string>
 
 
+    <string name="permission_dialog_title">Permisos necesarios</string>
+    <string name="permission_dialog_message">Esta aplicación necesita permisos de almacenamiento y ubicación para funcionar correctamente. Por favor, habilite estos permisos en la configuración de la aplicación.</string>
+
+    <string name="cancel">Cancelar</string>
+    <string name="settings">Configuración</string>
+
 
     <string name="main_toast_sd_enabled">SD card is enabled</string>
     <string name="main_toast_sd_disabled">SD card may be some error</string>
