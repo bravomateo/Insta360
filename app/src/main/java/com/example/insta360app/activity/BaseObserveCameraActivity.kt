@@ -2,13 +2,15 @@ package com.example.insta360app.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+
 import com.arashivision.sdkcamera.camera.InstaCameraManager
 import com.arashivision.sdkcamera.camera.callback.ICameraChangedCallback
 
 
 abstract class BaseObserveCameraActivity : AppCompatActivity(), ICameraChangedCallback {
-    protected val TAG = this.javaClass.simpleName
 
+
+    protected val TAG: String = this::class.java.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         InstaCameraManager.getInstance().registerCameraChangedCallback(this)

@@ -95,7 +95,7 @@ public class NetworkManager {
         return Long.parseLong(network.toString());
     }
 
-    // 解除网络绑定
+
     // Unbind Mobile Network
     public void clearBindProcess() {
         ConnectivityManager connManager = (ConnectivityManager) MyApp.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);

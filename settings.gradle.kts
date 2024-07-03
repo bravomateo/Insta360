@@ -3,6 +3,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven { url = uri ("https://jitpack.io")}
         maven {
             url = uri("http://nexus.arashivision.com:9999/repository/maven-public/")
             isAllowInsecureProtocol = true
@@ -11,7 +12,10 @@ pluginManagement {
                 password = "test123"
             }
         }
+
+
     }
+
 }
 
 dependencyResolutionManagement {
@@ -19,6 +23,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri ("https://jitpack.io")} 
         maven {
             url = uri("http://nexus.arashivision.com:9999/repository/maven-public/")
             isAllowInsecureProtocol = true
@@ -27,6 +32,7 @@ dependencyResolutionManagement {
                 password = "test123"
             }
         }
+
     }
 }
 

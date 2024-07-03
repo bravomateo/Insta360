@@ -1,12 +1,18 @@
 package com.example.insta360app.activity
 
+
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
-import com.arashivision.sdkcamera.camera.InstaCameraManager
+
 import com.example.insta360app.R
 import com.example.insta360app.util.CameraBindNetworkManager
 import com.example.insta360app.util.NetworkManager
+
+import com.arashivision.sdkcamera.camera.InstaCameraManager
+
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.runtime.Permission
 
@@ -25,7 +31,6 @@ class MainActivity : BaseObserveCameraActivity() {
             onCameraStatusChanged(true)
         }
 
-
         // Button Connect WIFI
         findViewById<View>(R.id.btn_connect_by_wifi).setOnClickListener {
             CameraBindNetworkManager.getInstance().bindNetwork { _ ->
@@ -39,6 +44,12 @@ class MainActivity : BaseObserveCameraActivity() {
             InstaCameraManager.getInstance().closeCamera()
         }
 
+
+        // Button Capture
+        findViewById<View>(R.id.btn_capture).setOnClickListener { _ ->
+            startActivity(Intent(this@MainActivity, CaptureActivity::class.java)
+            )
+        }
 
     }
 
@@ -62,6 +73,7 @@ class MainActivity : BaseObserveCameraActivity() {
 
     override fun onCameraStatusChanged(enabled: Boolean) {
         super.onCameraStatusChanged(enabled)
+        //findViewById<Button>(R.id.btn_capture).isEnabled = enabled
         if (enabled) {
             Toast.makeText(this, R.string.main_toast_camera_connected, Toast.LENGTH_SHORT).show()
         } else {
